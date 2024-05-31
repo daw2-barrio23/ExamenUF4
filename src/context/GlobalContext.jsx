@@ -1,4 +1,3 @@
-// GlobalContext.jsx
 import React, { createContext, useState, useEffect } from 'react';
 
 const GlobalContext = createContext();
@@ -16,18 +15,21 @@ const GlobalProvider = ({ children }) => {
         const responseResueltos = await fetch('https://json-server-examen-uf-4-eta.vercel.app/ticketsResueltos');
 
         if (!responsePendientes.ok || !responseResueltos.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('No responde');
         }
 
         const ticketsPendientes = await responsePendientes.json();
         const ticketsResueltos = await responseResueltos.json();
+
+        ticketsPendientes.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+        ticketsResueltos.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
 
         setDades({
           ticketsPendientes,
           ticketsResueltos
         });
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error en el fetch:', error);
       }
     };
 
@@ -35,7 +37,7 @@ const GlobalProvider = ({ children }) => {
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ dades }}>
+    <GlobalContext.Provider value={{ dades, setDades }}>
       {children}
     </GlobalContext.Provider>
   );

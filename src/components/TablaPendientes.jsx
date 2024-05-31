@@ -6,31 +6,31 @@ const TablaPendientes = () => {
   const { ticketsPendientes } = dades;
 
   return (
-    <table className="table mt-4">
-      <thead>
-        <tr>
-          <th>Código</th>
-          <th>Fecha</th>
-          <th>Aula</th>
-          <th>Grupo</th>
-          <th>Ordenador</th>
-          <th>Descripción</th>
-          <th>Alumno</th>
-          <th>Acciones</th>
+    <table className="table mt-4 border solid border-black">
+      <thead className='border solid border-black'>
+        <tr className='border solid border-black'>
+          <th className='border solid border-black'>Código</th>
+          <th className='border solid border-black'>Fecha</th>
+          <th className='border solid border-black'>Aula</th>
+          <th className='border solid border-black'>Grupo</th>
+          <th className='border solid border-black'>Ordenador</th>
+          <th className='border solid border-black'>Descripción</th>
+          <th className='border solid border-black'>Alumno</th>
+          <th className='border solid border-black'>Acciones</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className='border solid border-black'>
         {ticketsPendientes.map(ticket => (
-          <tr key={ticket.codigo}>
-            <td>{ticket.codigo}</td>
-            <td>{ticket.fecha}</td>
-            <td>{ticket.aula}</td>
-            <td>{ticket.grupo}</td>
-            <td>{ticket.ordenador}</td>
-            <td>{ticket.descripcion}</td>
-            <td>{ticket.alumno}</td>
-            <td>
-              <div className="d-flex space-x-2">
+          <tr className='border solid border-black' key={ticket.codigo}>
+            <td className='border solid border-black'>{ticket.codigo}</td>
+            <td className='border solid border-black'>{ticket.fecha}</td>
+            <td className='border solid border-black'>{ticket.aula}</td>
+            <td className='border solid border-black'>{ticket.grupo}</td>
+            <td className='border solid border-black'>{ticket.ordenador}</td>
+            <td className='border solid border-black'>{ticket.descripcion}</td>
+            <td className='border solid border-black'>{ticket.alumno}</td>
+            <td className='border solid border-black'>
+              <div className="d-flex space-x-2 ">
                 <button className="btn btn-success bg-green-500 mx-1 px-1 rounded" title="Resolver ticket">Resolver</button>
                 <button className="btn btn-warning bg-green-500 mx-1 px-1 rounded" title="Añadir comentario">Añadir comentario</button>
                 <button className="btn btn-info bg-sky-600 mx-1 px-1 rounded" title="Ver comentarios">Ver comentarios</button>

@@ -5,6 +5,7 @@ import GlobalProvider from './context/GlobalContext'; // Note the default import
 import Login from './vistas/Login';
 import Panel from './vistas/Panel';
 import Registro from './vistas/Registro'; // Correcting the import for Registro
+import NuevoTicket from './components/NuevoTicket';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/registro" element={<Registro />} />
               <Route path="/panel" element={<Panel />} />
+              <Route path="/nuevo" element={<NuevoTicket />}/>
             </Routes>
           </div>
         </div>
