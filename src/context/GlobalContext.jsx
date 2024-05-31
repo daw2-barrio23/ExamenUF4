@@ -1,32 +1,25 @@
+// GlobalContext.jsx
 import React, { createContext, useState, useEffect } from 'react';
+import bd from '../bd/bd.json';
 
-export const GlobalContext = createContext();
+const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
-  const [items, setItems] = useState([]);
-  const [error, setError] = useState(null);
+  const [dades, setDades] = useState({
+    ticketsPendientes: [],
+    ticketsResueltos: []
+  });
 
   useEffect(() => {
-    fetch('https://json-server-examen.vercel.app/historias')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => setItems(data))
-      .catch(error => setError(error));
+    setDades(bd);
   }, []);
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
   return (
-    <GlobalContext.Provider value={{ items, setItems }}>
+    <GlobalContext.Provider value={{ dades }}>
       {children}
     </GlobalContext.Provider>
   );
 };
 
+export { GlobalContext };
 export default GlobalProvider;
