@@ -1,27 +1,29 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import Main from './components/Main';
+//import { GlobalProvider } from './context/GlobalContext';
+import Login from './vistas/Login';
+import Tabla from './vistas/Tabla';
+import Registro from './vistas/Login';
 
-import ItemsList from './components/ItemsList';
-import Footer from './components/Footer';
-
-function App() {
+const App = () => {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <div className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Main />} />
-            
-            <Route path="/items" element={<ItemsList />} />
-          </Routes>
+   
+      <Router>
+        <div className="flex flex-col min-h-screen relative pt-16 pb-16">
+          <Header />
+          <div className="container mx-auto mt-4 flex-grow">
+            <Routes>
+              
+              <Route path="/login" element={<Login />} />
+              <Route path="/registro" element={<Registro />} />
+              <Route path="/tabla" element={<Tabla />} />
+            </Routes>
+          </div>
         </div>
-        <Footer />
-      </div>
-    </Router>
+      </Router>
+  
   );
-}
+};
 
 export default App;
