@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 //import { GlobalProvider } from './context/GlobalContext';
 import Login from './vistas/Login';
-import Tabla from './vistas/Tabla';
+import Panel from './vistas/Panel';
 import Registro from './vistas/Login';
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
               
               <Route path="/login" element={<Login />} />
               <Route path="/registro" element={<Registro />} />
-              <Route path="/tabla" element={<Tabla />} />
+              <Route path="/panel" element={<Panel />} />
             </Routes>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Tooltip, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Input } from "@nextui-org/react";
 
-const Tabla = () => {
+const Panel = () => {
   const [isDetailsOpen, setDetailsOpen] = useState(false);
   const [isEditOpen, setEditOpen] = useState(false);
 
@@ -86,4 +86,4 @@ const Tabla = () => {
   );
 };
 
-export default Tabla;
+export default Panel;
