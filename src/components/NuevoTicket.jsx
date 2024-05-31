@@ -46,34 +46,34 @@ const NuevoTicket = () => {
   };
 
   return (
-    <div className="container mt-4 text-center border rounded solid border-black pb-4">
-      <h2>Create a New Ticket</h2>
+    <div className=" container mt-4 justify-content-center border rounded solid border-black pb-4">
+      <h2 className='ml-2 mb-2'>Create a New Ticket</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="ml-2 form-group mb-2">
           <label>Código</label>
           <input type="text" name="codigo" value={formData.codigo} onChange={handleChange} className="form-control ml-3 border solid " required />
         </div>
-        <div className="form-group">
+        <div className="ml-2 form-group mb-2">
           <label>Fecha</label>
           <input type="date" name="fecha" value={formData.fecha} onChange={handleChange} className="form-control ml-3 border solid" required />
         </div>
-        <div className="form-group">
+        <div className="ml-2 form-group mb-2">
           <label>Aula</label>
           <input type="text" name="aula" value={formData.aula} onChange={handleChange} className="form-control ml-3 border solid" required />
         </div>
-        <div className="form-group">
+        <div className="ml-2 form-group mb-2">
           <label>Grupo</label>
           <input type="text" name="grupo" value={formData.grupo} onChange={handleChange} className="form-control ml-3 border solid" required />
         </div>
-        <div className="form-group">
+        <div className="ml-2 form-group mb-2">
           <label>Ordenador</label>
           <input type="text" name="ordenador" value={formData.ordenador} onChange={handleChange} className="form-control ml-3 border solid" required />
         </div>
-        <div className="form-group">
+        <div className="ml-2 form-group mb-2">
           <label>Descripción</label>
           <textarea name="descripcion" value={formData.descripcion} onChange={handleChange} className="form-control ml-3 border solid" required></textarea>
         </div>
-        <div className="form-group">
+        <div className="ml-2 form-group mb-2">
           <label>Alumno</label>
           <input type="text" name="alumno" value={formData.alumno} onChange={handleChange} className="form-control ml-3 border solid" required />
         </div>
