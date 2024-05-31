@@ -1,8 +1,9 @@
-// src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Main from './components/Main';
+
+import ItemsList from './components/ItemsList';
 import Footer from './components/Footer';
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<Main />} />
-            {/* Otras rutas aquí */}
+            
+            <Route path="/items" element={<ItemsList />} />
           </Routes>
         </div>
         <Footer />
