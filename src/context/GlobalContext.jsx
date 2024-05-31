@@ -1,32 +1,87 @@
-import React, { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 export const GlobalContext = createContext();
 
-const GlobalProvider = ({ children }) => {
-  const [items, setItems] = useState([]);
-  const [error, setError] = useState(null);
+export const GlobalProvider = ({ children }) => {
+    const [historias, setHistorias] = useState([]);
+    const [dataHistòria, setDataHistòria] = useState(null);
 
-  useEffect(() => {
-    fetch('https://json-server-examen.vercel.app/historias')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
+    useEffect(() => {
+        // Cargar los datos desde el servidor al montar el componente
+        const fetchHistorias = async () => {
+            try {
+                const response = await fetch('https://json-server-examen.vercel.app/historias');
+                const data = await response.json();
+                setHistorias(data);
+            } catch (error) {
+                console.error('Error al obtener las historias:', error);
+            }
+        };
+
+        fetchHistorias();
+    }, []);
+
+    const agregarHistoria = async (historia) => {
+        try {
+            const response = await fetch('https://json-server-examen.vercel.app/historias', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(historia),
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al agregar la historia');
+            }
+
+            const nuevaHistoria = await response.json();
+            setHistorias(prev => [...prev, nuevaHistoria]);
+        } catch (error) {
+            console.error('Error al agregar la historia:', error);
         }
-        return response.json();
-      })
-      .then(data => setItems(data))
-      .catch(error => setError(error));
-  }, []);
+    };
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+    const editarHistoria = async (id, historiaActualizada) => {
+        try {
+            const response = await fetch(`https://json-server-examen.vercel.app/historias/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(historiaActualizada),
+            });
 
-  return (
-    <GlobalContext.Provider value={{ items, setItems }}>
-      {children}
-    </GlobalContext.Provider>
-  );
+            if (!response.ok) {
+                throw new Error('Error al editar la historia');
+            }
+
+            const updatedHistoria = await response.json();
+            setHistorias(prev => prev.map(hist => hist.id === id ? updatedHistoria : hist));
+        } catch (error) {
+            console.error('Error al editar la historia:', error);
+        }
+    };
+
+    const borrarHistoria = async (id) => {
+        try {
+            const response = await fetch(`https://json-server-examen.vercel.app/historias/${id}`, {
+                method: 'DELETE',
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al borrar la historia');
+            }
+
+            setHistorias(prev => prev.filter(hist => hist.id !== id));
+        } catch (error) {
+            console.error('Error al borrar la historia:', error);
+        }
+    };
+
+    return (
+        <GlobalContext.Provider value={{ historias, agregarHistoria, editarHistoria, borrarHistoria, dataHistòria, setDataHistòria }}>
+            {children}
+        </GlobalContext.Provider>
+    );
 };
-
-export default GlobalProvider;

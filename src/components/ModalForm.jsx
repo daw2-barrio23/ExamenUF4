@@ -1,7 +1,7 @@
 import { useEffect, useContext } from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Input, Textarea } from "@nextui-org/react";
 import { Calendar, Pencil, Image as ImageIcon } from 'lucide-react';
-import { GlobalContext } from "../context/GlobalContex";
+import { GlobalContext } from "../context/GlobalContext";
 
 export default function ModalForm({ isOpen, onClose, onSave }) {
     const { dataHistòria, setDataHistòria } = useContext(GlobalContext);

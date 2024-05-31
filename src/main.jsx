@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
-import GlobalProvider from './context/GlobalContext';
+import { GlobalProvider } from './context/GlobalContext'; // Usa una exportación nombrada
+import { NextUIProvider } from '@nextui-org/react';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GlobalProvider>
-      <App />
+      <NextUIProvider>
+        <App />
+      </NextUIProvider>
     </GlobalProvider>
   </React.StrictMode>,
 );

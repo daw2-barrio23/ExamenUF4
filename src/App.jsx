@@ -2,9 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Main from './components/Main';
-
-import ItemsList from './components/ItemsList';
 import Footer from './components/Footer';
+import Cards from './components/Cards';
 
 function App() {
   return (
@@ -14,8 +13,7 @@ function App() {
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<Main />} />
-            
-            <Route path="/items" element={<ItemsList />} />
+            <Route path="/cards" element={<Cards />} />
           </Routes>
         </div>
         <Footer />
